@@ -1,0 +1,29 @@
+{
+  "name": "i78s.validatejs",
+  "version": "0.0.1",
+  "description": "フォームバリデーションライブラリ",
+  "url": "https://github.com/i78s/ValidateJS",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/i78s/ValidateJS.git"
+  },
+  "keywords": [],
+  "author": "i78s",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/i78s/ValidateJS/issues"
+  },
+  "homepage": "https://github.com/i78s/ValidateJS#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "webpack": "^1.12.9"
+  }
+}
