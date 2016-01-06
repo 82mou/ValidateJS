@@ -184,8 +184,11 @@
 
 <span class="kd">let</span> <span class="nx">validate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validate</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">customValidate</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">password</span><span class="o">:</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">form</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="nx">form</span><span class="p">[</span><span class="s1">&#39;passwordConfirm&#39;</span><span class="p">]);</span>
+        <span class="p">},</span>
         <span class="nx">passwordConfirm</span><span class="o">:</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">form</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">if</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span> <span class="o">!==</span> <span class="nx">form</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">].</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span> <span class="o">!==</span> <span class="nx">form</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">].</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">element</span><span class="p">.</span><span class="nx">setCustomValidity</span><span class="p">(</span><span class="s1">&#39;パスワードが一致しません&#39;</span><span class="p">);</span>
                 <span class="k">return</span><span class="p">;</span>
             <span class="p">}</span>
@@ -193,13 +196,6 @@
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</pre></div>
-    <div class="highlight"><pre><span class="o">&lt;</span><span class="nx">form</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;form&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">required</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;passwordConfirm&quot;</span> <span class="nx">required</span><span class="o">&gt;</span>
-
-    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">&gt;</span><span class="nx">送信</span><span class="o">&lt;</span><span>/button&gt;</span>
-<span class="o">&lt;</span><span>/form&gt;</span>
 </pre></div>
 
 

@@ -59,6 +59,9 @@
 	var validateMessages = new _ValidateMessages2.default('.js-validate-messages');
 	var validate = new _Validate2.default('form', {
 	    customValidate: {
+	        password: function password(element, form) {
+	            undefined.trigger('change', form['passwordConfirm']);
+	        },
 	        passwordConfirm: function passwordConfirm(element, form) {
 	            if (element.value !== form['password'].value) {
 	                element.setCustomValidity('パスワードが一致しません');
@@ -149,6 +152,15 @@
 	            return;
 	        }
 	        this.disabled(true);
+	    };
+	    /**
+	     * changeイベントを強制発火させる
+	     * @param element
+	     */
+	    Validate.prototype.trigger = function (event, element) {
+	        var e = document.createEvent('HTMLEvents');
+	        e.initEvent(event, true, true);
+	        element.dispatchEvent(e);
 	    };
 	    /**
 	     * 送信ボタンのdisabledを切り替える
