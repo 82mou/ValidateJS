@@ -60,7 +60,7 @@
 	var validate = new _Validate2.default('form', {
 	    customValidate: {
 	        password: function password(element, form) {
-	            undefined.trigger('change', form['passwordConfirm']);
+	            this.trigger('change', form['passwordConfirm']);
 	        },
 	        passwordConfirm: function passwordConfirm(element, form) {
 	            if (element.value !== form['password'].value) {
