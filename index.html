@@ -151,7 +151,7 @@
 
 <span class="kd">let</span> <span class="nx">validateMessages</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ValidateMessages</span><span class="p">(</span><span class="s1">&#39;.js-validate-messages&#39;</span><span class="p">);</span>
 <span class="kd">let</span> <span class="nx">validate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validate</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">onCheckHandler</span><span class="o">:</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">validity</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">onCheckHandler</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">validity</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">;</span>
         <span class="nx">validateMessages</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">validity</span><span class="p">);</span>
 
@@ -169,8 +169,11 @@
     <div class="highlight"><pre><span class="kr">import</span> <span class="nx">Validate</span> <span class="nx">from</span> <span class="s1">&#39;../../lib/Validate&#39;</span><span class="p">;</span>
 
 <span class="kd">let</span> <span class="nx">validate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validate</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">onSubmitHandler</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">);</span>
+    <span class="nx">onSubmitHandler</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 例</span>
+        <span class="c1">// this.disabled(true);</span>
+        <span class="c1">// フォームの値を取得してajaxを投げる</span>
+        <span class="c1">// 通信完了時に this.disabled(false); で送信ボタンのdisabledを解除</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </pre></div>
@@ -184,10 +187,10 @@
 
 <span class="kd">let</span> <span class="nx">validate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validate</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">customValidate</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">password</span><span class="o">:</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">form</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">password</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">form</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="nx">form</span><span class="p">[</span><span class="s1">&#39;passwordConfirm&#39;</span><span class="p">]);</span>
         <span class="p">},</span>
-        <span class="nx">passwordConfirm</span><span class="o">:</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">form</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">passwordConfirm</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">form</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span> <span class="o">!==</span> <span class="nx">form</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">].</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">element</span><span class="p">.</span><span class="nx">setCustomValidity</span><span class="p">(</span><span class="s1">&#39;パスワードが一致しません&#39;</span><span class="p">);</span>
                 <span class="k">return</span><span class="p">;</span>
